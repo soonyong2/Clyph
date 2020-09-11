@@ -9,12 +9,13 @@ abstract public class Unit : MonoBehaviour
     public float MaxHP;
     public float HP;
     public float Speed;
+    public float SpeedMultiplier;
     public GameObject Target;
     bool IsAttacking = false;
 
     protected void Start()
     {
-        
+        SpeedMultiplier = 1.0f;
     }
 
     protected void FixedUpdate()
@@ -30,8 +31,8 @@ abstract public class Unit : MonoBehaviour
                 StopCoroutine(Attack());
                 IsAttacking = false;
             }
-            
-            Vector3 Displacement = Distance.normalized * Speed * Time.fixedDeltaTime;
+
+            Vector3 Displacement = Distance.normalized * Speed * SpeedMultiplier * Time.fixedDeltaTime;
             transform.Translate(Displacement, Space.World);
         }
         else

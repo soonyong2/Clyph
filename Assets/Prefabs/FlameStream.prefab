@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 32034845126724574}
   - component: {fileID: 197725708193622224}
   - component: {fileID: 196707139992353474}
-  - component: {fileID: 35633595347808286}
+  - component: {fileID: 1774451332597963630}
   m_Layer: 0
   m_Name: FlameStream
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34227867799773438}
-  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: 0.3535534, w: 0.61237246}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 10, y: 10, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 31857286389848602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 60}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!198 &197725708193622224
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -748,7 +748,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.01
+      value: 0.1
       mode: 3
       spread: 0
       speed:
@@ -3556,7 +3556,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 1
     collisionMode: 0
@@ -4756,7 +4756,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &35633595347808286
+--- !u!114 &1774451332597963630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4765,15 +4765,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 34227867799773438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b25391547f29ab4bb98f3ac6d97ff27, type: 3}
+  m_Script: {fileID: 11500000, guid: 3734423be72417b4eb43c2cbcd556b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {x: 0, y: 0, z: 0}
-  Speed: 5
-  Gravity: 10
-  Velocity: {x: 0, y: 0, z: 0}
-  Explosion: {fileID: 1337198075554910, guid: 4d08d9a8d5457ea4aabc65922b252dcf, type: 3}
   Lifetime: 1
+  Radius: 5
+  Angle: 45
+  Enemies: []
 --- !u!1 &34676174664912860
 GameObject:
   m_ObjectHideFlags: 0

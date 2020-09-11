@@ -22,9 +22,10 @@ public class Module : Unit
         {
             if (Target != null && ProjectileObject != null)
             {
-                GameObject ProjectileInstance = Instantiate(ProjectileObject, transform.position, Quaternion.identity, transform);
+                GameObject ProjectileInstance = Instantiate(ProjectileObject, transform.position, ProjectileObject.transform.rotation, transform);
                 Projectile ProjectileComponent = ProjectileInstance.GetComponent<Projectile>();
-                ProjectileComponent.Target = Target.transform.position;
+                if (ProjectileComponent != null)
+                    ProjectileComponent.Target = Target.transform.position;
             }
             yield return new WaitForSeconds(Interval);
         }

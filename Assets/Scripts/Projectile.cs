@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     {
         Vector3 Distance = Target - transform.position;
         Vector2 DistanceH = new Vector2(Distance.x, Distance.z);
-        float T = Distance.magnitude / Speed;
+        float T = Speed == 0 ? 0 : Distance.magnitude / Speed;
         Vector2 VelocityH = DistanceH.normalized * Speed;
         float VelocityV = T * Gravity / 2;
         Velocity = new Vector3(VelocityH.x, VelocityV, VelocityH.y);

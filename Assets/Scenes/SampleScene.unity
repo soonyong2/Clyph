@@ -463,8 +463,18 @@ PrefabInstance:
         type: 3}
       propertyPath: ProjectileObject
       value: 
-      objectReference: {fileID: 1947871717301538, guid: 8455c44af810a2742a669ae15e3b9f4b,
+      objectReference: {fileID: 34227867799773438, guid: 0c90b8c4cb098004db287e53b490a230,
         type: 3}
+    - target: {fileID: 5972043393172824302, guid: 79147002018dcc24a99abba37ce41e91,
+        type: 3}
+      propertyPath: Interval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972043393172824302, guid: 79147002018dcc24a99abba37ce41e91,
+        type: 3}
+      propertyPath: SpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79147002018dcc24a99abba37ce41e91, type: 3}
 --- !u!1001 &1037255045826994377
@@ -612,7 +622,17 @@ PrefabInstance:
         type: 3}
       propertyPath: ProjectileObject
       value: 
-      objectReference: {fileID: 1947871717301538, guid: 8455c44af810a2742a669ae15e3b9f4b,
+      objectReference: {fileID: 34227867799773438, guid: 0c90b8c4cb098004db287e53b490a230,
         type: 3}
+    - target: {fileID: 5972043393172824302, guid: 79147002018dcc24a99abba37ce41e91,
+        type: 3}
+      propertyPath: Interval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972043393172824302, guid: 79147002018dcc24a99abba37ce41e91,
+        type: 3}
+      propertyPath: SpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79147002018dcc24a99abba37ce41e91, type: 3}
