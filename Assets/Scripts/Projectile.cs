@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float Gravity;
     public Vector3 Velocity;
     public GameObject Explosion;
+    public float Lifetime;
     void Start()
     {
         Vector3 Distance = Target - transform.position;
@@ -18,6 +19,7 @@ public class Projectile : MonoBehaviour
         float VelocityV = T * Gravity / 2;
         Velocity = new Vector3(VelocityH.x, VelocityV, VelocityH.y);
     }
+
     void FixedUpdate()
     {
         float DeltaTime = Time.fixedDeltaTime;
@@ -37,6 +39,10 @@ public class Projectile : MonoBehaviour
     {
         if (transform.position.y < 0)
             Explode();
+
+        Lifetime -= Time.deltaTime;
+        if (Lifetime < 0)
+            Destroy(gameObject);
     }
 
     void Explode()

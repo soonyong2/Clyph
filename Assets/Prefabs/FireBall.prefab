@@ -9439,6 +9439,7 @@ MonoBehaviour:
   Gravity: 15
   Velocity: {x: 0, y: 0, z: 0}
   Explosion: {fileID: 1337198075554910, guid: 4d08d9a8d5457ea4aabc65922b252dcf, type: 3}
+  Lifetime: 1
 --- !u!54 &-619336322031039029
 Rigidbody:
   m_ObjectHideFlags: 0
