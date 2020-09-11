@@ -7,31 +7,24 @@ public class Module : Unit
 {
     public GameObject ProjectileObject;
 
-    protected void Start()
-    {
-        base.Start();
-    }
-
     protected void Update()
     {
-        
+        if (Target == null)
+        {
+            List<Enemy> Enemies = Object.FindObjectsOfType<Enemy>().ToList();
+            Enemies.Sort((Enemy A, Enemy B) => Vector3.Distance(transform.position, A.transform.position).CompareTo(Vector3.Distance(transform.position, B.transform.position)));
+            Target = Enemies[0].gameObject;
+        }
     }
-
     public override IEnumerator Attack()
     {
         while (true)
         {
-            List<Enemy> Enemies = Object.FindObjectsOfType<Enemy>().ToList();
-            if (Enemies.Count == 0)
-                yield return new WaitForSeconds(Interval);
-            
-            Vector3 Position = transform.position;
-            Enemies.Sort((Enemy A, Enemy B) => Vector3.Distance(Position, A.transform.position).CompareTo(Vector3.Distance(Position, B.transform.position)));
-            if (ProjectileObject != null)
+            if (Target != null && ProjectileObject != null)
             {
                 GameObject ProjectileInstance = Instantiate(ProjectileObject, transform.position, Quaternion.identity, transform);
                 Projectile ProjectileComponent = ProjectileInstance.GetComponent<Projectile>();
-                ProjectileComponent.Target = Enemies[0].transform.position;
+                ProjectileComponent.Target = Target.transform.position;
             }
             yield return new WaitForSeconds(Interval);
         }
