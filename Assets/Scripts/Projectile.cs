@@ -28,9 +28,9 @@ public class Projectile : MonoBehaviour
         transform.Translate(Displacement, Space.World);
     }
 
-    void OnTriggerEnter(Collider ho)
+    void OnTriggerEnter(Collider Other)
     {
-        var Enemy = ho.gameObject.GetComponent<Enemy>();
+        var Enemy = Other.gameObject.GetComponent<Enemy>();
         if (Enemy != null)
             Explode();
     }

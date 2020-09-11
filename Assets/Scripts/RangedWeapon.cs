@@ -8,11 +8,6 @@ public class RangedWeapon : MonoBehaviour
     public float Lifetime;
     public float Radius;
     public float Angle;
-    public List<Enemy> Enemies;
-    void Start()
-    {
-        Enemies = FindObjectsOfType<Enemy>().ToList();
-    }
 
     void Update()
     {
@@ -23,6 +18,7 @@ public class RangedWeapon : MonoBehaviour
 
     void FixedUpdate()
     {
+        List<Enemy> Enemies = Manager.Instance.Enemies;
         int Count = Enemies.Count;
         for (int i = 0; i < Count; i++)
         {

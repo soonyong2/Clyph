@@ -11,7 +11,7 @@ public class Module : Unit
     {
         if (Target == null)
         {
-            List<Enemy> Enemies = Object.FindObjectsOfType<Enemy>().ToList();
+            List<Enemy> Enemies = Manager.Instance.Enemies;
             Enemies.Sort((Enemy A, Enemy B) => Vector3.Distance(transform.position, A.transform.position).CompareTo(Vector3.Distance(transform.position, B.transform.position)));
             Target = Enemies[0].gameObject;
         }
