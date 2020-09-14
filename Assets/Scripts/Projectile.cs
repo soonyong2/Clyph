@@ -10,6 +10,11 @@ public class Projectile : MonoBehaviour
     public Vector3 Velocity;
     public GameObject Explosion;
     public float Lifetime;
+    public float Power;
+
+    public float KnockbackForce;
+    public float KnockbackRadius;
+    public float KnockbackDistance;
     void Start()
     {
         Vector3 Distance = Target - transform.position;
@@ -32,12 +37,15 @@ public class Projectile : MonoBehaviour
     {
         var Enemy = Other.gameObject.GetComponent<Enemy>();
         if (Enemy != null)
+        {
+            Enemy.Damage(Power);
             Explode();
+        }
     }
 
     void Update()
     {
-        if (transform.position.y < 0)
+        if (transform.position.y < -0.5f)
             Explode();
 
         Lifetime -= Time.deltaTime;
@@ -47,10 +55,22 @@ public class Projectile : MonoBehaviour
 
     void Explode()
     {
-        if (Explosion)
+        List<Enemy> Enemies = Manager.Instance.Enemies;
+        for (int i = 0; i < Enemies.Count; i++)
         {
-            GameObject ExplosionObject = Instantiate(Explosion, transform.position, Quaternion.identity, transform.parent);
+            Enemy NearUnit = Enemies[i];
+            Vector3 Direction = NearUnit.transform.position - transform.position;
+            if (Direction.magnitude < KnockbackRadius)
+            {
+                KnockbackData knockbackData = new KnockbackData();
+                knockbackData.Force = Direction.normalized * KnockbackForce;
+                knockbackData.Distance = KnockbackDistance;
+                NearUnit.knockbackData = knockbackData;
+            }
         }
+
+        if (Explosion)
+            Instantiate(Explosion, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
 }

@@ -8,6 +8,7 @@ public class RangedWeapon : MonoBehaviour
     public float Lifetime;
     public float Radius;
     public float Angle;
+    public float Damage;
 
     void Update()
     {

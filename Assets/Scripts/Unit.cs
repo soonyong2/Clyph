@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class KnockbackData
+{
+    public Vector2 Force;
+    public float Distance;
+}
+
 abstract public class Unit : MonoBehaviour
 {
     public float Range;
@@ -12,16 +18,30 @@ abstract public class Unit : MonoBehaviour
     public float SpeedMultiplier;
     public GameObject Target;
     bool IsAttacking = false;
+    public KnockbackData knockbackData;
+
+    [HideInInspector]
+    public BoxCollider Collider;
 
     protected void Start()
     {
         SpeedMultiplier = 1.0f;
+        Collider = GetComponent<BoxCollider>();
     }
 
     protected void FixedUpdate()
     {
         if (Target == null)
+            SetTarget();
+
+        if (Target.transform.position.magnitude > 8)
+            knockbackData = null;
+
+        if (knockbackData != null)
+        {
+            Knockback();
             return;
+        }
 
         Vector3 Distance = Target.transform.position - transform.position;
         if (Distance.magnitude > Range)
@@ -45,5 +65,30 @@ abstract public class Unit : MonoBehaviour
         }
     }
 
+    public void Damage(float Power)
+    {
+        HP -= Power;
+        if (HP <= 0)
+            Die();
+    }
+
+    public void Knockback()
+    {
+        Collider.enabled = false;
+        transform.Translate(knockbackData.Force * Time.deltaTime);
+        knockbackData.Distance -= knockbackData.Force.magnitude * Time.deltaTime;
+        if (knockbackData.Distance < 0)
+        {
+            Collider.enabled = true;
+            knockbackData = null;
+        }
+    }
+
+    public virtual void Die()
+    {
+        Destroy(gameObject);
+    }
+
     public abstract IEnumerator Attack();
+    public abstract void SetTarget();
 }
