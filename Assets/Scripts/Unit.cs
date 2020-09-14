@@ -29,6 +29,12 @@ abstract public class Unit : MonoBehaviour
         Collider = GetComponent<BoxCollider>();
     }
 
+    protected void Update()
+    {
+        Camera camera = Manager.Instance.Camera;
+        transform.rotation = Quaternion.LookRotation(-camera.transform.forward);
+    }
+
     protected void FixedUpdate()
     {
         if (Target == null)

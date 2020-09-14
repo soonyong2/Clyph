@@ -788,7 +788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 18.2, z: -16.7}
+  m_LocalPosition: {x: 0, y: 15, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1160,6 +1160,7 @@ MonoBehaviour:
   Canvas: {fileID: 1425906120}
   HealthBar: {fileID: 1637175155356587597, guid: 7fc0272ccc985d5409c60d391e227275,
     type: 3}
+  Camera: {fileID: 519420031}
 --- !u!1001 &759029193
 PrefabInstance:
   m_ObjectHideFlags: 0
