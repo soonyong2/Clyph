@@ -31,6 +31,14 @@ public class Projectile : MonoBehaviour
         Velocity.y -= Gravity * DeltaTime;
         Vector3 Displacement = Velocity * DeltaTime;
         transform.Translate(Displacement, Space.World);
+
+        if(transform.position.y < 0)
+            Explode();
+
+            Lifetime -= Time.deltaTime;
+            if(Lifetime<0)
+                Destroy(gameObject);
+
     }
 
     void OnTriggerEnter(Collider Other)
